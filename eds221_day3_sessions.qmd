@@ -4,7 +4,10 @@ format: html
 editor: visual
 ---
 
-## 
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
 
 ```{r}
 temperature <- 97.2
@@ -47,3 +50,54 @@ switch(housing_type,
        "double" = print("750"),
        "whole" = print("1100"))
 ```
+
+## For loops
+
+```{r}
+height <- c(60, 50, 55, 70, 90, 84)
+
+for (i in seq_along(height)) {
+  half_height <- height[i] / 2
+  print(half_height)
+}
+
+## For each value in the height vector, return the sum of the value and the one right after 
+
+for (i in seq_along(height) - 1) {
+  height_sum <- height[i] + height[i+1]
+  print(height_sum)
+}
+
+## Write a for loop that calculates the value of height for each element divided by the mean of the entire height vector
+
+height_mean <- mean(height)
+
+for (i in seq_along(height)) {
+  std_height <- height[i] / height_mean
+  print(std_height)
+}
+```
+
+### AFTERNOON
+
+## Functional programming for easier iteration
+
+Use *apply()* to iterate over rows or columns. MARGIN = 1 is rows, and MARGIN = 2 is columns
+
+```{r}
+# the two lines below are equivalent
+# apply(X = mtcars, MARGIN = 2, FUN = median)
+# apply(mtcars, 2, median)
+```
+
+Starter: find mean flipper length of penguins by species
+
+```{r}
+penguins %>% 
+  group_by(species, sex, island) %>% 
+  summarize(mean_flipper_length = mean(flipper_length_mm, na.rm = TRUE), 
+            sd_flipper_length = sd(flipper_length_mm, na.rm = TRUE))
+  
+```
+
+group_by summary is going to be used A LOT
