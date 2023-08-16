@@ -1,0 +1,30 @@
+---
+title: "EDS221 Day 3 Sessions"
+format: html
+editor: visual
+---
+
+## 
+
+```{r}
+temperature <- 97.2
+
+if (temperature > 97) {
+  print("Temperature warning")
+} else 
+    print("No warning")
+
+```
+
+Create an if else statement for blue whale length. Create a variable blue whale, which has a value of 40 meters. Create an if-else statement that returns "GIANT" if the length exceeds 35, "MEDIUM" if the length is between 20 and 35, or "SMALL" if the length is \<= 20
+
+```{r}
+blue_whale_length <- 40
+
+if (blue_whale_length > 35) {
+  print("GIANT")
+} else if (20 <= blue_whale_length & blue_whale_length <= 35) {
+  print("MEDIUM")
+} else
+  print("SMALL")
+```
